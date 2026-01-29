@@ -1,9 +1,27 @@
-version: "3"
+version: "3.8"
+
 services:
+  db:
+    image: mysql:8.0
+    container_name: zerosubtech_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: ctf
+      MYSQL_USER: ctfuser
+      MYSQL_PASSWORD: ctfpass
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+
   web:
     image: php:8.1-apache
     container_name: zerosubtech_web
+    depends_on:
+      - db
     volumes:
       - ./web:/var/www/html
     ports:
       - "8080:80"
+    command: >
+      bash -lc "docker-php-ext-install mysqli && apache2-foreground"

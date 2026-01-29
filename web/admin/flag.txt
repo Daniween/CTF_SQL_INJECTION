@@ -1,2 +1,0 @@
-FLAG{06_WEB_PWNED}
-Vous avez réussi à remonter jusqu'au serveur et à exploiter le blog.
