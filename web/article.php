@@ -8,10 +8,6 @@ if ($mysqli->connect_error) {
     die("Erreur DB: " . $mysqli->connect_error);
 }
 
-/*
- * VULNÉRABLE (CTF) : concaténation directe -> SQLi possible
- * ex: ?id=1 OR 1=1
- */
 $sql = "SELECT id, title, body FROM articles WHERE id = '$id'";
 echo "<pre>DEBUG SQL: " . htmlspecialchars($sql) . "</pre>";
 
