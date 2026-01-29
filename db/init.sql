@@ -24,4 +24,4 @@ CREATE TABLE flags (
 );
 
 INSERT INTO flags(name, value) VALUES
-('sql injection', 'FLAG{06_WEB_PWNED}');
+('sql injection', 'FLAG{WEB_SQL}');
